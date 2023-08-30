@@ -1,0 +1,11 @@
+# create an ebs volume fpr the DB pod to store mysql data
+aws ec2 create-volume --availability-zone=us-east-1a --size=3 --volume-type=gp2
+
+# copy the volume id and paste somewhere and make sure when running the db pod, it's in the same zone as the ebs vol.
+
+# label the zone that's in the same AZ with the EBS volume
+kubectl label nodes <node name> zone=us-east-1a
+# label the other node with us-east-1b
+
+# now write the definition files
+
